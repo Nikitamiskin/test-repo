@@ -1,0 +1,49 @@
+Positive Test Cases
+Scenario: Open the compose email window
+
+Given the user is logged into Gmail
+When the user clicks on the "Compose" button
+Then the compose email window should open
+
+Scenario: Enter a recipient email address
+
+Given the compose email window is open
+When the user enters a valid email address in the "To" field
+Then the email address should be entered without any error
+
+Scenario: Enter a subject
+
+Given the compose email window is open
+When the user enters "Incubyte" in the "Subject" field
+Then the subject should be entered without any error
+
+Scenario: Enter email body text
+
+Given the compose email window is open
+When the user enters "QA test for Incubyte" in the email body
+Then the text should be entered without any error
+
+Scenario: Send an email
+
+Given the compose email window is open and filled with necessary details (recipient, subject, and body)
+When the user clicks on the "Send" button
+Then the email should be sent, and a confirmation message should appear
+Negative Test Cases
+
+Scenario: Cannot send an email without a recipient
+
+Given the compose email window is open and filled with subject and body
+When the user leaves the "To" field empty and clicks on the "Send" button
+Then an error message should appear indicating that the recipient field cannot be empty
+
+Scenario: Cannot send an email without a subject
+
+Given the compose email window is open and filled with recipient and body
+When the user leaves the "Subject" field empty and clicks on the "Send" button
+Then a warning message should appear asking for confirmation to send the email without a subject
+
+Scenario: Cannot send an email without body text
+
+Given the compose email window is open and filled with recipient and subject
+When the user leaves the email body empty and clicks on the "Send" button
+Then a warning message should appear asking for confirmation to send the email without body text
